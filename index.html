@@ -13,7 +13,9 @@
   <div class="row">
     <div class="col">
       Nam of pet food brand
-      <select class="form-control" id="comp-product" aria-label="Competitor Product"></select>
+      <select class="form-control" id="comp-product" aria-label="Competitor Product">
+        <option disabled value="" selected='true'>Select Pet Food Brand</option>
+      </select>
     </div>
     <div class="col">
       Compare with Nom Nom
@@ -21,12 +23,12 @@
     </div>
   </div>
 
-  <div class="container food-comparison-container hidden">
+  <div class="container hidden" id="food-comparison-container">
     <div class="row">
-      <div class="col comp-food-info">
+      <div class="col" id="comp-food-info">
 
       </div>
-      <div class="col nom-food-info">
+      <div class="col" id="nom-food-info">
         
       </div>
     </div>

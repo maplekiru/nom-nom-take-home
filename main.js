@@ -7,7 +7,7 @@ const $nomFoodInfo = $('#nom-food-info');
 const COMP_FOOD_DATA = {
   blueBuffaloChicken: {
     name: 'Blue Buffalo Wilderness Chicken',
-    image: '...',
+    image: 'https://www.nomnomnow.com/images/brands/blue_buffalo_chicken.jpg',
     protein: 99,
     fat: 44,
     carbs: 79,
@@ -20,18 +20,53 @@ const COMP_FOOD_DATA = {
 const NOM_FOOD_DATA = {
   beefMash: {
     name: 'Beef Mash',
-    image: '...',
+    image: 'https://www.nomnomnow.com/images/recipes/bowl_beef_square.png',
     protein: 93,
     fat: 48,
     carbs: 75,
   }
 }
 
-function loadData() {
-  console.log("Ran");
-  for(let product in COMP_FOOD_DATA) {
-    $(`<option value=${COMP_FOOD_DATA[product]}> ${COMP_FOOD_DATA[product].name} </option>`).appendTo('#comp-product');
-  }
+function generateMarkUp(product) {
+  return $(`
+    <div>
+      <h3>Protein: ${product.protein} </h3>
+      <h3>Protein: ${product.fat} </h3>
+      <h3>Protein: ${product.carbs} </h3>
+    </div>
+  `);
 }
 
-loadData();
+function loadInitialData() {
+
+  for (let product in COMP_FOOD_DATA) {
+    $(`<option value=${product}> ${COMP_FOOD_DATA[product].name} </option>`).appendTo('#comp-product');
+  }
+
+  for (let product in NOM_FOOD_DATA) {
+    $(`<option value=${product}> ${NOM_FOOD_DATA[product].name} </option>`).appendTo('#nom-nom-product');
+  }
+
+}
+
+function showComparison() {
+  $('#comp-food-info').empty()
+  $('#nom-food-info').empty()
+
+  const compSelection = $('#comp-product option:selected').val()
+  const compFoodData = COMP_FOOD_DATA[compSelection];
+  const $compFoodMarkUp = generateMarkUp(compFoodData);
+  $compFoodInfo.append($compFoodMarkUp);
+
+  const nomSelection = $('#nom-nom-product option:selected').val()
+  const nomFoodData = NOM_FOOD_DATA[nomSelection];
+  const $nomFoodMarkUp = generateMarkUp(nomFoodData);
+  $nomFoodInfo.append($nomFoodMarkUp);
+
+  $foodComparison.show();
+}
+
+$('#comp-product').change(showComparison);
+$('#nom-nom-product').change(showComparison);
+
+loadInitialData();
