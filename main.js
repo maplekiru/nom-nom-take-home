@@ -11,10 +11,22 @@ const COMP_FOOD_DATA = {
     protein: 99,
     fat: 44,
     carbs: 79,
-    minProtein: 34,
-    minFat: 15,
-    calorieDensity: 3599
+  },
+  earthbornHolisticAdultVantage: {
+    name: 'Earthborn Holistic Adult Vantage',
+    image:'https://www.nomnomnow.com/images/brands/earthborn_holistic.jpg' ,
+    protein: 67,
+    fat: 37,
+    carbs: 129
+  },
+  frommFamilyGoldHolistic: {
+    name: 'Fromm Family Gold Holistic',
+    image: 'https://www.nomnomnow.com/images/brands/fromm_family.jpg',
+    protein: 71,
+    fat: 46,
+    carbs: 104
   }
+
 }
 
 const NOM_FOOD_DATA = {
